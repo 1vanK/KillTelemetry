@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.ServiceProcess;
 using System.Timers;
 using System.IO;
+using Microsoft.Win32;
 
 namespace KillTelemetry
 {
@@ -21,6 +22,14 @@ namespace KillTelemetry
         protected override void OnStart(string[] args)
         {
             timer.Enabled = true;
+
+            // Убираем водяной знак (watermark). Требуется перезагрузка
+            RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation");
+            if (key != null)
+            {
+                key.SetValue("Manual", 1);
+                key.Close();
+            }
         }
 
         protected override void OnStop()
