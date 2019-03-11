@@ -28,6 +28,7 @@ namespace KillTelemetry
             if (key != null)
             {
                 key.SetValue("Manual", 1);
+                key.SetValue("DownlevelActivation", 2);
                 key.Close();
             }
         }
