@@ -38,6 +38,15 @@ namespace KillTelemetry
                 key.SetValue("SkipRearm", 1);
                 key.Close();
             }
+
+            // Блокируеи запуск службы C:\WINDOWS\system32\sppsvc.exe
+            // (Защита программного обеспечения / Software Protection/ Microsoft Software Pprotection Platform Service
+            key = Registry.LocalMachine.CreateSubKey(@"SYSTEM\CurrentControlSet\Services\sppsvc");
+            if (key != null)
+            {
+                key.SetValue("Start", 4);
+                key.Close();
+            }
         }
 
         protected override void OnStop()
