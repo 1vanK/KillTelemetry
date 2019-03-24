@@ -24,11 +24,18 @@ namespace KillTelemetry
             timer.Enabled = true;
 
             // Убираем водяной знак (watermark). Требуется перезагрузка
+            // Водяной знак рисует процесс explorer.exe (если его прибить, то водяного знака не будет, впрочем как и рабочего стола)
             RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation");
             if (key != null)
             {
                 key.SetValue("Manual", 1);
                 key.SetValue("DownlevelActivation", 2);
+                key.Close();
+            }
+            key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform");
+            if (key != null)
+            {
+                key.SetValue("SkipRearm", 1);
                 key.Close();
             }
         }
