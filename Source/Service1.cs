@@ -70,7 +70,6 @@ namespace KillTelemetry
         protected override void OnStart(string[] args)
         {
             timer.Enabled = true;
-            RemoveWatermark();
         }
 
         protected override void OnStop()
@@ -90,6 +89,8 @@ namespace KillTelemetry
                     //File.AppendAllText(@"c:\temp\KillTelemetry.txt", DateTime.Now.ToString("yyyy.MM.dd HH:mm:ss:ffff") + Environment.NewLine);
                 }
             }
+
+            RemoveWatermark();
         }
     }
 }
