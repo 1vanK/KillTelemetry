@@ -21,7 +21,7 @@ namespace KillTelemetry
 
         // Убираем водяной знак (watermark). Требуется перезагрузка.
         // Водяной знак рисует процесс explorer.exe (если его прибить, то водяного знака не будет, впрочем как и рабочего стола)
-        void RemoveWatermark()
+        /*void RemoveWatermark()
         {
             RegistryKey key = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform\Activation");
             if (key != null)
@@ -65,7 +65,7 @@ namespace KillTelemetry
                 key.SetValue("Start", 4);
                 key.Close();
             }
-        }
+        }*/
 
         protected override void OnStart(string[] args)
         {
@@ -90,7 +90,7 @@ namespace KillTelemetry
                 }
             }
 
-            RemoveWatermark();
+            //RemoveWatermark();
         }
     }
 }

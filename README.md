@@ -4,7 +4,6 @@
 CompatTelRunner.exe: через некоторое время телеметрия опять насилует винт.
 
 Данный сервис раз в секунду просматривает список процессов Windows 10 и убивает Microsoft Compatibility Telemetry, если она запущена.
-Заодно убирает водяной знак "Активация Windows" ("Activate Windows" watermark) в углу экрана
 
 Установка:
 1) Скопировать все файлы из Release в любую папку (например в c:\Programs\KillTelemetry\)
